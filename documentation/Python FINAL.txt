@@ -1,0 +1,53 @@
+﻿-Model stores X’s and O’s 
+-3 x 3 grid tic tac toe
+-View = Graphics window, UI   (gets used)
+-Model = keeps track, and tells view
+-Controller = Interacts w/ both ^^^
+-Class diagram = Class names, methods
+
+
+User Interface (UI):
+
+Window 600 x 600
+3x3 Grid displayed 
+Colors (easy to see background, grid lines, X/O’s) 
+Create unique header “Tic Tac Toe”
+
+Display who’s turn it is (i.e. Player 1 (X) or Player 2 (O))
+Display when someones has clicked in the grid
+
+Error messages for bad decisions (clicking in an already used square)
+Who’s turn it is will be displayed 
+Who won the game
+Who lost the game 
+Draw if no one wins
+
+
+Game Play Design:
+
+
+USER
+	PROGRAM
+	Start Program
+	Present empty grid 
+**Present who’s turn it is
+	Player clicks on a grid square 
+	Game draws X
+**Game switches to ---> Player #2 (O’s)
+	Player 2 clicks on a grid square 
+	Game draws O
+**Switches back to ------> Player #1 (X’s)
+	Clicks outside of grid 
+	Returns nothing 
+	Clicks on an already filled square 
+	Returns Message: “Click another square that isn’t filled”
+	Clicks in grid square
+	Checks if player is winner 
+	Clicks in grid square 
+	Checks if players Draw 
+	Player 1 wins
+	Displays winner message 
+**displays loser message to P2
+	Player 2 wins
+	Displays winner message 
+**displays loser message to P1
