@@ -27,29 +27,10 @@ class Model:
             return 1
         elif self.grid[0] != 'e' and self.grid[1] != 'e' and self.grid[2] != 'e' and self.grid[3] != 'e' and self.grid[4] != 'e' and self.grid[5] != 'e' and self.grid[6] != 'e' and self.grid[7] != 'e' and self.grid[8] != 'e':
             return 2
-    def Empty(self, x):
-        if self.grid[0] == 'e':
+    def isValid(self, x):
+        if self.grid[x] == 'e':
             return 1
-        elif self.grid[1] == 'e':
-            return 1
-        elif self.grid[2] == 'e':
-            return 1
-        elif self.grid[3] == 'e':
-            return 1
-        elif self.grid[4] == 'e':
-            return 1
-        elif self.grid[5] == 'e':
-            return 1
-        elif self.grid[6] == 'e':
-            return 1
-        elif self.grid[7] == 'e':
-            return 1
-        elif self.grid[8] == 'e':
-            return 1
-        else:
-            return 2
-    def ControlX(self):
-        click = self.v.Click()
+    def ControlX(self, click):
         if click == 0:
             if self.grid[0] != 'O':
                 self.v.drawX(0)
@@ -114,8 +95,7 @@ class Model:
             else:
                 self.v.Message(3, "Please choose a valid cell.")
         return click
-    def ControlO(self):
-        click = self.v.Click()
+    def ControlO(self, click):
         if click == 0:
             if self.grid[0] != 'X':
                 self.v.drawO(0)
@@ -164,24 +144,11 @@ class Model:
         else:
             self.v.Message(3, "Please choose a valid cell.")
         return click
+    def resetGrid(self):
+        for i in range(len(self.grid)):
+            self.grid.pop(i)
+            self.grid.insert(i, "e")
 
 def ModelTest():
-    v = View()
-    m = Model(v)
-    for i in range(9):
-        if m.Empty(v.Click()) == 1:
-            m.ControlX()
-            print(m.Empty(v.Click()))
-        else:
-            v.Message(1, "Illegal Move!")
-        v.Click()
-        m.ControlO()
-        if m.isWinner() is 1:
-            v.Message(1, "You Win!")
-        elif m.isWinner() is 2:
-            v.Message(1, "Draw!")
-        print(m.grid)
 
-    input()  
-
-ModelTest()    
+    ModelTest()    
