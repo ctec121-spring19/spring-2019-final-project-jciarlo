@@ -1,5 +1,8 @@
 from graphics import *
-
+'''
+input: a click from the user's mouse
+process: creates the grid, converts coordinates of click to grid #'s, sets messages, determines whether yes or no is clicked
+output: cell #'s, displayed messages, X or Os, true or false for question'''
 class View:
     
     def __init__(self):
@@ -34,7 +37,7 @@ class View:
         self.three.setSize(18)
 
 
-    #which cell is being clicked 
+    # determines which cell is being clicked 
     def Click(self):
         p1mouse = self.win.getMouse()
         p1x = p1mouse.getX()
@@ -60,7 +63,7 @@ class View:
             return 8
         else:
             return 9
-
+    # shows a message
     def Message(self, num, sentence):
         # num is a posistional argument 1 being the highest and 7 being the lowest.
         if num == 1:
@@ -70,7 +73,7 @@ class View:
         elif num == 3:
             self.three.setText(sentence)
    
-    #tells where to draw X
+    # tells where to draw X
     def drawX(self, where):
         if where == 0:
             self.items.append(Line(Point(0.1,0.1), Point(0.9,0.9)).draw(self.win))
@@ -100,7 +103,7 @@ class View:
             self.items.append(Line(Point(2.1,2.1), Point(2.9,2.9)).draw(self.win))
             self.items.append(Line(Point(2.9,2.1), Point(2.1,2.9)).draw(self.win))
     
-    #tells where to draw O
+    # tells where to draw O
     def drawO(self, where):
         if where == 0:
             self.items.append(Circle(Point(0.5, 0.5), 0.45).draw(self.win))
@@ -121,7 +124,7 @@ class View:
         elif where == 8:
             self.items.append(Circle(Point(2.5, 2.5), 0.45).draw(self.win))
     
-    #yes or no buttons 
+    # yes or no buttons 
     def done(self):
         Rectangle(Point(0, -1), Point(1, -1.5)).draw(self.win).setFill("PaleTurquoise")
         Rectangle(Point(2, -1), Point(3, -1.5)).draw(self.win).setFill("PaleTurquoise")
@@ -136,7 +139,7 @@ class View:
         elif int(p1x) == 2 and int(p1y) == -1:
             return True
   
-    #resets game 
+    # resets visuals for game
     def reset(self):
         for i in range(len(self.items)):
             self.items[i].undraw()

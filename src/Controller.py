@@ -1,5 +1,10 @@
 from View import *
 from Model import *
+'''
+input: cell numbers from view, validation from model, execution from model
+process: creates a loop for the game and new games, determines if user clicks within grid
+output: sends messages to view, sends visual instructions to grid, displays full working tic tac toe
+'''
 class Controller:
     
     def __init__(self):

@@ -1,5 +1,9 @@
 from View import View
-
+'''
+input: cell #'s from view
+process: determines winner using Xs and Os within the grid list, determines empty cell using same list, determines where a character should be drawn and adds it to grid list, has function to reset grid
+output: cell #s to display a character, win conditions
+'''
 class Model:
     
     def __init__(self, View):
@@ -35,7 +39,7 @@ class Model:
         if self.grid[x] == 'e':
             return 1
     
-    #where X was clicked 
+    # recording location of X and telling view to draw it 
     def ControlX(self, click):
         if click == 0:
             if self.grid[0] != 'O':
@@ -102,7 +106,7 @@ class Model:
                 self.v.Message(3, "Please choose a valid cell.")
         return click
     
-    #where O was clicked 
+    # recording location of O and telling view to draw it
     def ControlO(self, click):
         if click == 0:
             if self.grid[0] != 'X':
@@ -153,7 +157,7 @@ class Model:
             self.v.Message(3, "Please choose a valid cell.")
         return click
     
-    #resets grid
+    # resets grid list for new game, but not the visual grid
     def resetGrid(self):
         for i in range(len(self.grid)):
             self.grid.pop(i)
@@ -161,4 +165,4 @@ class Model:
 
 def ModelTest():
 
-    ModelTest()    
+    ModelTest()
