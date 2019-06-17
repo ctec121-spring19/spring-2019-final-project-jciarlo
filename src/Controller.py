@@ -1,9 +1,14 @@
 from View import *
 from Model import *
 class Controller:
+    
     def __init__(self):
         self.v = View()
         self.m = Model(self.v)
+    
+    #determines winner and coresponding message 
+    #determines if illegal move was made and coresponding message 
+    #tells player who's turn it is 
     def playAGame(self):
         winner = False
         playerOneTurn = True
@@ -59,6 +64,9 @@ class Controller:
                     self.v.Message(2, "(ﾟーﾟ)")
                     break
             playerOneTurn = not playerOneTurn
+    
+
+    #determines to play again and reset or to exit the game 
     def play(self):
         while True:
             self.v.Message(3, "Would you like to play (again)?")
@@ -72,6 +80,7 @@ class Controller:
                     break
             else:
                 self.v.Message(2, "You must select yes or no!")
+
 def ControllerTest():
     c = Controller()
     c.play()

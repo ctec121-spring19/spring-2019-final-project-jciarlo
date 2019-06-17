@@ -1,5 +1,7 @@
 from graphics import *
+
 class View:
+    
     def __init__(self):
         self.win = GraphWin("Tic-Tac-Toe", 500, 600)
         self.items = []
@@ -32,7 +34,7 @@ class View:
         self.three.setSize(18)
 
 
-
+    #which cell is being clicked 
     def Click(self):
         p1mouse = self.win.getMouse()
         p1x = p1mouse.getX()
@@ -67,6 +69,8 @@ class View:
             self.two.setText(sentence)
         elif num == 3:
             self.three.setText(sentence)
+   
+    #tells where to draw X
     def drawX(self, where):
         if where == 0:
             self.items.append(Line(Point(0.1,0.1), Point(0.9,0.9)).draw(self.win))
@@ -95,6 +99,8 @@ class View:
         elif where == 8:
             self.items.append(Line(Point(2.1,2.1), Point(2.9,2.9)).draw(self.win))
             self.items.append(Line(Point(2.9,2.1), Point(2.1,2.9)).draw(self.win))
+    
+    #tells where to draw O
     def drawO(self, where):
         if where == 0:
             self.items.append(Circle(Point(0.5, 0.5), 0.45).draw(self.win))
@@ -114,6 +120,8 @@ class View:
             self.items.append(Circle(Point(1.5, 2.5), 0.45).draw(self.win))
         elif where == 8:
             self.items.append(Circle(Point(2.5, 2.5), 0.45).draw(self.win))
+    
+    #yes or no buttons 
     def done(self):
         Rectangle(Point(0, -1), Point(1, -1.5)).draw(self.win).setFill("PaleTurquoise")
         Rectangle(Point(2, -1), Point(3, -1.5)).draw(self.win).setFill("PaleTurquoise")
@@ -122,10 +130,13 @@ class View:
         p1mouse = self.win.getMouse()
         p1x = p1mouse.getX()
         p1y = p1mouse.getY()
+        
         if int(p1x) == 0 and int(p1y) == -1:
             return False
         elif int(p1x) == 2 and int(p1y) == -1:
             return True
+  
+    #resets game 
     def reset(self):
         for i in range(len(self.items)):
             self.items[i].undraw()
@@ -139,5 +150,7 @@ def viewTest():
     v.done()
     print(v.done())
     input()
+
+
 if __name__ == "__main__":
     viewTest()

@@ -2,8 +2,16 @@
 #
 # 
 
-import Controller
+from Controller import *
 
-def main():
-    # delete and enter your code here
-    pass
+
+  #time to play 
+def ControllerTest():
+    c = Controller()
+    c.play()
+ControllerTest()
+
+
+
+
+  

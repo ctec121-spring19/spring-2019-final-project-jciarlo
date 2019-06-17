@@ -5,6 +5,9 @@ class Model:
     def __init__(self, View):
         self.v = View
         self.grid = ['e', 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e']
+    
+    
+    #list of ways to win Horizontal, Vertical, and Diagonal 
     def isWinner(self):
         # Horizontal Wins
         if self.grid[0] == self.grid[1] and self.grid[0] == self.grid[2] and self.grid[0] != 'e':
@@ -27,9 +30,12 @@ class Model:
             return 1
         elif self.grid[0] != 'e' and self.grid[1] != 'e' and self.grid[2] != 'e' and self.grid[3] != 'e' and self.grid[4] != 'e' and self.grid[5] != 'e' and self.grid[6] != 'e' and self.grid[7] != 'e' and self.grid[8] != 'e':
             return 2
+    
     def isValid(self, x):
         if self.grid[x] == 'e':
             return 1
+    
+    #where X was clicked 
     def ControlX(self, click):
         if click == 0:
             if self.grid[0] != 'O':
@@ -95,6 +101,8 @@ class Model:
             else:
                 self.v.Message(3, "Please choose a valid cell.")
         return click
+    
+    #where O was clicked 
     def ControlO(self, click):
         if click == 0:
             if self.grid[0] != 'X':
@@ -144,6 +152,8 @@ class Model:
         else:
             self.v.Message(3, "Please choose a valid cell.")
         return click
+    
+    #resets grid
     def resetGrid(self):
         for i in range(len(self.grid)):
             self.grid.pop(i)
